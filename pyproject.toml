@@ -3,6 +3,7 @@ name = "dockgen"
 version = "0.1.0"
 description = "Generate fresh docker images"
 readme = "README.md"
+license = "BSD-2-Clause"
 authors = [
     { name = "Guilhem Saurel", email = "guilhem.saurel@laas.fr" }
 ]
