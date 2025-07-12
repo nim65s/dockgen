@@ -1,0 +1,13 @@
+[jrl-cmakemodules]
+url = "github:jrl-umi3218"
+
+[eigenpy]
+url = "github:stack-of-tasks"
+apt_deps = ["libboost-all-dev", "libeigen3-dev", "python3-numpy", "python3-scipy"]
+src_deps = ["jrl-cmakemodules"]
+
+[coal]
+url = "github:coal-library"
+apt_deps = ["libboost-all-dev", "libqhull-dev"]
+src_deps = ["eigenpy"]
+
