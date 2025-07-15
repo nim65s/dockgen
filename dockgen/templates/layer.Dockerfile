@@ -17,4 +17,4 @@ RUN {% if project.url == "." %}ls{% else %}tar xf /src.tar.gz --strip-components
           -Wno-dev \
  && cmake --build build -j {{ args.jobs }} \
  && cmake --build build -t install \
- && rm -rf ./*
+ && rm -rf {% if project.url == "." %}build{% else %}./*{% endif %}

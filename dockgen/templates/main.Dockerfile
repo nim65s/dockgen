@@ -1,4 +1,4 @@
-FROM {{ args.from }} as base
+FROM {{ args.from }} AS base
 
 WORKDIR /src
 
@@ -9,6 +9,9 @@ RUN --mount=type=cache,sharing=locked,target=/var/cache/apt \
     apt update \
     && DEBIAN_FRONTEND=noninteractive apt install -qqy --no-install-recommends \
     {{ apt_deps }}
+
+RUN cd /usr/local/lib/python3.* \
+ && ln -s dist-packages site-packages
 
 ENV JOBS={{ args.jobs }} \
     CMAKE_BUILD_TYPE=Release \
