@@ -16,6 +16,7 @@ logger = getLogger("dockgen.forge")
 class ForgeType(StrEnum):
     GitHub = "github:"
     HTTP = "http"
+    Dot = "."
     # Git = "git"
 
 
@@ -29,7 +30,11 @@ class Forge:
         self.headers = {}
         self.org = None
         self.name = name
-        self.slug = str(self.forge_type).removesuffix(":")
+        self.slug = (
+            "dot"
+            if self.forge_type == ForgeType.Dot
+            else str(self.forge_type).removesuffix(":")
+        )
 
         getattr(self, f"init_{self.slug}")()
 
@@ -70,6 +75,10 @@ class Forge:
             logger.info("extracting %s to %s", filename, self.dir)
             unpack_archive(self.args.work_dir / filename, self.dir)
 
+    def init_dot(self):
+        self.version = None
+        self.tarball = None
+
     # def init_git(self):
     #     self.name = self.name or self.url.removesuffix(".git").split("/")[-1]
     #     self.dir = self.args.work_dir / self.name
@@ -97,3 +106,6 @@ class Forge:
             path.write(content.content)
             return path
         return None
+
+    def get_file_dot(self, path: Path) -> Path | None:
+        return path

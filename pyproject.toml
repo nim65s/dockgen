@@ -16,7 +16,7 @@ dependencies = [
 
 
 [project.scripts]
-cmeel = "dockgen.__main__:main"
+dockgen = "dockgen.__main__:main"
 
 [build-system]
 requires = ["hatchling"]
