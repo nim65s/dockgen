@@ -5,7 +5,7 @@ Generate fresh docker images
 ## Usage
 
 ```
-usage: dockgen [-h] [-f FILE] [-q] [-v] [--token TOKEN] [--work-dir WORK_DIR] 
+usage: dockgen [-h] [-f FILE] [-q] [-v] [--token TOKEN] [--work-dir WORK_DIR]
                [--from FROM] [-o OUTPUT] [--jobs JOBS] [--build] [--name NAME]
 
 Generate fresh docker images
@@ -22,4 +22,17 @@ options:
   --jobs JOBS          Number of build jobs
   --build              Build the docker image
   --name NAME          Docker image name
+```
+
+## Example
+
+For the [eigenpy](https://github.com/stack-of-tasks/eigenpy) project:
+```toml
+[jrl-cmakemodules]
+url = "github:jrl-umi3218"
+
+[eigenpy]
+url = "."
+apt_deps = ["libboost-all-dev", "libeigen3-dev", "python3-numpy", "python3-scipy"]
+src_deps = ["jrl-cmakemodules"]
 ```

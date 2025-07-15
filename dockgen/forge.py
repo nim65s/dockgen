@@ -42,10 +42,9 @@ class Forge:
         if "/" not in self.url:
             self.url = f"{self.url}/{self.name}"
         self.org, self.name = self.url.removeprefix("github:").split("/")[:2]
-        self.headers = {
-            "Accept": "application/vnd.github+json",
-            "Authorization": f"Bearer {self.args.token}",
-        }
+        self.headers = {"Accept": "application/vnd.github+json"}
+        if self.args.token:
+            self.header["Authorization"] = f"Bearer {self.args.token}"
         self.dir = self.args.work_dir / self.name
         self.dir.mkdir(parents=True, exist_ok=True)
 
