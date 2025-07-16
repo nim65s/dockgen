@@ -16,7 +16,7 @@ dependencies = [
 
 
 [project.scripts]
-dockgen = "dockgen.__main__:main"
+dockgen = "dockgen:main"
 
 [build-system]
 requires = ["hatchling"]

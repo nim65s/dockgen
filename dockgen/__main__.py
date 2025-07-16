@@ -1,5 +1,6 @@
 """Generate fresh docker images."""
 
+from argparse import Namespace
 from logging import getLogger
 from subprocess import check_call
 
@@ -11,22 +12,19 @@ from .project import Project
 
 logger = getLogger("dockgen")
 
+GENERAL_APT_DEPS = [
+    "build-essential",
+    "cmake",
+    "git",
+    "libpython3-dev",
+    "python-is-python3",
+]
 
-def main():
-    parser = get_parser()
-    args = get_conf(parser)
 
+def main(args: Namespace):
     env = Environment(loader=PackageLoader("dockgen"), autoescape=select_autoescape())
     layers = []
-    apt_deps = set(
-        [
-            "build-essential",
-            "cmake",
-            "git",
-            "libpython3-dev",
-            "python-is-python3",
-        ]
-    )
+    apt_deps = set(GENERAL_APT_DEPS)
     layer = env.get_template("layer.Dockerfile")
     with args.file.open("rb") as f:
         for k, v in load(f).items():
@@ -51,4 +49,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = get_parser()
+    args = get_conf(parser)
+
+    main(args)
