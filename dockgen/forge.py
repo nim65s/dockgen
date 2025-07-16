@@ -44,7 +44,7 @@ class Forge:
         self.org, self.name = self.url.removeprefix("github:").split("/")[:2]
         self.headers = {"Accept": "application/vnd.github+json"}
         if self.args.token:
-            self.header["Authorization"] = f"Bearer {self.args.token}"
+            self.headers["Authorization"] = f"Bearer {self.args.token}"
         self.dir = self.args.work_dir / self.name
         self.dir.mkdir(parents=True, exist_ok=True)
 

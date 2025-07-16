@@ -1,1 +1,1 @@
-from .__main__ import main  # noqa: F401
+from .__main__ import dockgen, main  # noqa: F401

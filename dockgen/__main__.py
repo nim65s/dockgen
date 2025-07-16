@@ -21,7 +21,7 @@ GENERAL_APT_DEPS = [
 ]
 
 
-def main(args: Namespace):
+def dockgen(args: Namespace):
     env = Environment(loader=PackageLoader("dockgen"), autoescape=select_autoescape())
     layers = []
     apt_deps = set(GENERAL_APT_DEPS)
@@ -48,8 +48,10 @@ def main(args: Namespace):
         check_call(["docker", "build", "-t", args.name, "-f", str(args.output), "."])
 
 
-if __name__ == "__main__":
+def main():
     parser = get_parser()
-    args = get_conf(parser)
+    dockgen(get_conf(parser))
 
-    main(args)
+
+if __name__ == "__main__":
+    main()

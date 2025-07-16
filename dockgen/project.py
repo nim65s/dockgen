@@ -41,7 +41,7 @@ class Project:
                 break
         else:
             err = f"Project {name} at {url} has an unknown forge"
-            raise RuntimeError(err)
+            raise AttributeError(err)
 
         self.org = org or self.forge.org
         self.version = version or self.forge.version
