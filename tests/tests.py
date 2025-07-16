@@ -4,7 +4,7 @@ from sys import executable
 from tempfile import mktemp
 from unittest import TestCase
 
-from dockgen import dockgen
+from dockgen import Dockgen
 from dockgen.conf import get_conf, get_parser
 
 
@@ -13,10 +13,21 @@ class DockgenTest(TestCase):
         args = get_conf(get_parser())
         args.file = Path(__file__).parent / "eigenpy.toml"
         args.output = Path(mktemp())
-        dockgen(args)
+        Dockgen(args)
         output = args.output.read_text()
         self.assertIn(
             "ADD . .",
+            output,
+        )
+
+    def test_online_eigenpy(self):
+        args = get_conf(get_parser())
+        args.file = Path(__file__).parent / "online-eigenpy.toml"
+        args.output = Path(mktemp())
+        Dockgen(args)
+        output = args.output.read_text()
+        self.assertIn(
+            "ADD https://api.github.com/repos/jrl-umi3218/jrl-cmakemodules/tarball/v",
             output,
         )
 
@@ -26,7 +37,7 @@ class DockgenTest(TestCase):
         args.output = Path(mktemp())
         args.build = True
         args.name = "dockgen-test"
-        dockgen(args)
+        Dockgen(args)
         output = args.output.read_text()
         self.assertIn(
             "ADD https://api.github.com/repos/jrl-umi3218/jrl-cmakemodules/tarball/v",
@@ -49,7 +60,7 @@ class DockgenTest(TestCase):
         args = get_conf(get_parser())
         args.file = Path(__file__).parent / "wrong.toml"
         with self.assertRaises(AttributeError):
-            dockgen(args)
+            Dockgen(args)
 
     def test_help(self):
         exe = [executable]

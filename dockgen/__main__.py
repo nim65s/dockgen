@@ -21,36 +21,54 @@ GENERAL_APT_DEPS = [
 ]
 
 
-def dockgen(args: Namespace):
-    env = Environment(loader=PackageLoader("dockgen"), autoescape=select_autoescape())
-    layers = []
-    apt_deps = set(GENERAL_APT_DEPS)
-    layer = env.get_template("layer.Dockerfile")
-    with args.file.open("rb") as f:
-        for k, v in load(f).items():
-            project = Project(args=args, name=k, **v)
-            apt_deps |= project.apt_deps
-            layers.append(layer.render(args=args, project=project))
+class Dockgen:
+    def __init__(self, args: Namespace):
+        self.args = args
+        self.projects = {}
+        self.projects_order = []
+        with args.file.open("rb") as f:
+            for k, v in load(f).items():
+                self.projects[k] = Project(dockgen=self, name=k, **v)
+                self.projects_order.append(k)
 
-    main = env.get_template("main.Dockerfile")
+        env = Environment(
+            loader=PackageLoader("dockgen"), autoescape=select_autoescape()
+        )
+        layer = env.get_template("layer.Dockerfile")
 
-    apt_deps = " \\\n    ".join(sorted(apt_deps))
+        layers = [
+            layer.render(args=args, project=self.projects[project])
+            for project in self.projects_order
+        ]
 
-    with args.output.open("w") as out:
-        print(main.render(args=args, apt_deps=apt_deps), file=out)
-        print(file=out)
-        for layer in layers:
-            print(layer, file=out)
+        main = env.get_template("main.Dockerfile")
+
+        apt_deps = " \\\n    ".join(
+            sorted(
+                {
+                    *GENERAL_APT_DEPS,
+                    *(d for p in self.projects.values() for d in p.apt_deps),
+                }
+            )
+        )
+
+        with args.output.open("w") as out:
+            print(main.render(args=args, apt_deps=apt_deps), file=out)
             print(file=out)
+            for layer in layers:
+                print(layer, file=out)
+                print(file=out)
 
-    if args.build:
-        logger.info("Building image %s", args.name)
-        check_call(["docker", "build", "-t", args.name, "-f", str(args.output), "."])
+        if args.build:
+            logger.info("Building image %s", args.name)
+            check_call(
+                ["docker", "build", "-t", args.name, "-f", str(args.output), "."]
+            )
 
 
 def main():
     parser = get_parser()
-    dockgen(get_conf(parser))
+    Dockgen(get_conf(parser))
 
 
 if __name__ == "__main__":

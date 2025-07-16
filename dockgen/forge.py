@@ -91,7 +91,7 @@ class Forge:
     def get_file(self, path: Path) -> Path | None:
         method = f"get_file_{self.slug}"
         if hasattr(self, method):
-            return getattr(self, method)(self.args, path)
+            return getattr(self, method)(path)
         path = self.dir / path
         if path.exists():
             return path
@@ -101,10 +101,10 @@ class Forge:
         url = f"https://api.github.com/repos/{self.org}/{self.name}"
         content = httpx.get(f"{url}/contents/{path}", headers=self.headers)
         if content.status_code == 200:
-            path = self.dir / path
-            path.write(content.content)
-            return path
+            download_url = content.json()["download_url"]
+            content = httpx.get(download_url, headers=self.headers)
+            if content.status_code == 200:
+                path = self.dir / path
+                path.write_text(content.text)
+                return path
         return None
-
-    def get_file_dot(self, path: Path) -> Path | None:
-        return path

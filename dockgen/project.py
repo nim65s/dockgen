@@ -1,9 +1,14 @@
 """Definition of a project to build."""
 
-from argparse import Namespace
 from enum import StrEnum
+from tomllib import load
+from typing import TYPE_CHECKING
 
 from .forge import Forge, ForgeType
+
+
+if TYPE_CHECKING:
+    from .__main__ import Dockgen
 
 
 class BuildSystem(StrEnum):
@@ -23,7 +28,7 @@ class Project:
 
     def __init__(
         self,
-        args: Namespace,
+        dockgen: "Dockgen",
         name: str,
         url: str,
         org: str | None = None,
@@ -37,7 +42,7 @@ class Project:
         self.url = url
         for forge_type in ForgeType:
             if self.url.startswith(forge_type):
-                self.forge = Forge(args, forge_type, url, name)
+                self.forge = Forge(dockgen.args, forge_type, url, name)
                 break
         else:
             err = f"Project {name} at {url} has an unknown forge"
@@ -50,5 +55,24 @@ class Project:
         self.apt_deps = set(apt_deps or [])
         self.src_deps = set(src_deps or [])
 
-        # TODO
-        # upstream_dockgen = self.forge.get_file("dockgen.toml")
+        if self.url != ".":
+            if upstream_dockgen := self.forge.get_file("dockgen.toml"):
+                with upstream_dockgen.open("rb") as f:
+                    for name, conf in load(f).items():
+                        if name == self.name:
+                            tgt = self
+                        elif name in dockgen.projects:
+                            tgt = dockgen.projects[name]
+                        else:
+                            dockgen.projects[name] = Project(
+                                dockgen=dockgen, name=name, **conf
+                            )
+                            dockgen.projects_order.append(name)
+                            continue
+
+                        for k, v in conf.items():
+                            match k:
+                                case "apt_deps":
+                                    tgt.apt_deps |= set(v)
+                                case "src_deps":
+                                    tgt.src_deps |= set(v)
