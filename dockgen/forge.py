@@ -30,12 +30,12 @@ class Forge:
         self.headers = {}
         self.org = None
         self.name = name
+        self.dir = args.work_dir / self.name
         self.slug = (
             "dot"
             if self.forge_type == ForgeType.Dot
             else str(self.forge_type).removesuffix(":")
         )
-
         getattr(self, f"init_{self.slug}")()
 
     def init_github(self):
@@ -45,7 +45,6 @@ class Forge:
         self.headers = {"Accept": "application/vnd.github+json"}
         if self.args.token:
             self.headers["Authorization"] = f"Bearer {self.args.token}"
-        self.dir = self.args.work_dir / self.name
         self.dir.mkdir(parents=True, exist_ok=True)
 
         self.api_url = f"https://api.github.com/repos/{self.org}/{self.name}"
@@ -59,7 +58,6 @@ class Forge:
         if not self.name:
             err = f"name must be set for {self.url}"
             raise AttributeError(err)
-        self.dir = self.args.work_dir / self.name
         self.tarball = self.url
         if self.dir.exists():
             logger.info("%s already exists, skipping download", self.dir)

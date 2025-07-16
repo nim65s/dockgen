@@ -68,7 +68,7 @@ class DockgenTest(TestCase):
             import coverage  # noqa: F401
 
             exe = ["coverage", "run"]
-        except ImportError:
+        except ImportError:  # pragma: no cover
             pass
         output = check_output([*exe, "-m", "dockgen", "-h"], text=True)
         self.assertIn("Generate fresh docker images", output)

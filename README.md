@@ -26,7 +26,7 @@ options:
 
 ## Example
 
-For the [eigenpy](https://github.com/stack-of-tasks/eigenpy) project:
+For the [eigenpy](https://github.com/stack-of-tasks/eigenpy) project, you can add a `dockgen.toml` with:
 ```toml
 [jrl-cmakemodules]
 url = "github:jrl-umi3218"
