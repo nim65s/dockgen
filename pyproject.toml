@@ -31,3 +31,6 @@ dev = [
 
 [tool.coverage.run]
 parallel = true
+
+[tool.uv.build-backend]
+module-root = ""
