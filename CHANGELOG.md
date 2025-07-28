@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- use upstream for eigenpy online test
+- hatchling -> uv_build
+
 ## [v0.2.0] - 2025-07-16
 
 - Add changelog
