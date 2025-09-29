@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- add `configure_args` option
+
 ## [v0.3.0] - 2025-07-28
 
 - use upstream for eigenpy online test

@@ -26,6 +26,7 @@ class Project:
     build_systems: [BuildSystem]
     apt_deps: set[str]
     src_deps: set[str]
+    configure_args: set[str]
 
     def __init__(
         self,
@@ -38,6 +39,7 @@ class Project:
         build_systems: list[str] | None = None,
         apt_deps: list[str] | None = None,
         src_deps: list[str] | None = None,
+        configure_args: list[str] | None = None,
     ):
         self.dockgen = dockgen
         self.name = name
@@ -56,6 +58,7 @@ class Project:
         self.build_systems = [BuildSystem[b] for b in (build_systems or self.detect())]
         self.apt_deps = set(apt_deps or [])
         self.src_deps = set(src_deps or [])
+        self.configure_args = set(configure_args or [])
 
         if self.url != ".":
             if upstream_dockgen := self.forge.get_file("dockgen.toml"):
@@ -94,3 +97,5 @@ class Project:
                             tgt.apt_deps |= set(v)
                         case "src_deps":
                             tgt.src_deps |= set(v)
+                        case "configure_args":
+                            tgt.configure_args |= set(v)

@@ -20,6 +20,17 @@ class DockgenTest(TestCase):
             output,
         )
 
+    def test_example_robot_data(self):
+        args = get_conf(get_parser())
+        args.file = Path(__file__).parent / "example-robot-data.toml"
+        args.output = Path(mktemp())
+        Dockgen(args)
+        output = args.output.read_text()
+        self.assertIn(
+            "          -DBUILD_PYTHON_INTERFACE=OFF \\",
+            output,
+        )
+
     def test_online_eigenpy(self):
         args = get_conf(get_parser())
         args.file = Path(__file__).parent / "online-eigenpy.toml"
