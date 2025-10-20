@@ -14,6 +14,7 @@ logger = getLogger("dockgen")
 
 GENERAL_APT_DEPS = [
     "build-essential",
+    "ca-certificates",
     "cmake",
     "git",
     "libpython3-dev",
