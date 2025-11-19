@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [v0.5.0] - 2025-10-20
 
 - add `ca-certificates` apt package
+- allow uv_build v0.9
+- update tests for jrl-cmakemodules #790
 
 ## [v0.4.0] - 2025-09-30
 
