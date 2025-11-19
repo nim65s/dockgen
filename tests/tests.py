@@ -61,7 +61,7 @@ class DockgenTest(TestCase):
                 "--rm",
                 args.name,
                 "cat",
-                "/usr/local/lib/cmake/jrl-cmakemodules/jrl-cmakemodulesConfig.cmake",
+                "/usr/local/share/cmake/jrl-cmakemodules/jrl-cmakemodulesConfig.cmake",
             ],
             text=True,
         )
