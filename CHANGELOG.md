@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.6.0] - 2025-11-20
+
 ## [v0.5.0] - 2025-10-20
 
 - add `ca-certificates` apt package
@@ -32,7 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial minial working version
 
-[Unreleased]: https://github.com/nim65s/dockgen/compare/v0.5.0...main
+[Unreleased]: https://github.com/nim65s/dockgen/compare/v0.6.0...main
+[v0.6.0]: https://github.com/nim65s/dockgen/compare/v0.5.0...v0.6.0
 [v0.5.0]: https://github.com/nim65s/dockgen/compare/v0.4.0...v0.5.0
 [v0.4.0]: https://github.com/nim65s/dockgen/compare/v0.3.0...v0.4.0
 [v0.3.0]: https://github.com/nim65s/dockgen/compare/v0.2.0...v0.3.0
