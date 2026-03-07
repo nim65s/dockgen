@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.6.1] - 2026-03-07
+
 - allow uv_build 0.10
 
 ## [v0.6.0] - 2025-11-20
@@ -36,7 +38,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial minial working version
 
-[Unreleased]: https://github.com/nim65s/dockgen/compare/v0.6.0...main
+[Unreleased]: https://github.com/nim65s/dockgen/compare/v0.6.1...main
+[v0.6.1]: https://github.com/nim65s/dockgen/compare/v0.6.0...v0.6.1
 [v0.6.0]: https://github.com/nim65s/dockgen/compare/v0.5.0...v0.6.0
 [v0.5.0]: https://github.com/nim65s/dockgen/compare/v0.4.0...v0.5.0
 [v0.4.0]: https://github.com/nim65s/dockgen/compare/v0.3.0...v0.4.0
