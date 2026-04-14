@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- fix project order
+
 ## [v0.6.1] - 2026-03-07
 
 - allow uv_build 0.10

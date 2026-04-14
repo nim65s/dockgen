@@ -32,6 +32,15 @@ class Dockgen:
                 self.projects[k] = Project(dockgen=self, name=k, **v)
                 self.projects_order.append(k)
 
+        to_order = sorted(self.projects_order)
+        fixed_order = []
+        while to_order:
+            for project in to_order:
+                if self.projects[project].src_deps.issubset(fixed_order):
+                    fixed_order.append(project)
+                    to_order.remove(project)
+        self.projects_order = fixed_order
+
         env = Environment(
             loader=PackageLoader("dockgen"), autoescape=select_autoescape()
         )
