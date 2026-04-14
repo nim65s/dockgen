@@ -13,7 +13,7 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v6
-      - uses: astral-sh/setup-uv@8.0.0
+      - uses: astral-sh/setup-uv@v8.0.0
       - run: uv run ruff check .
       - run: uv run coverage run -m unittest
       - run: uv run coverage combine
