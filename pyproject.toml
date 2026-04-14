@@ -12,7 +12,7 @@ dev = [
 
 [project]
 name = "dockgen"
-version = "0.7.0"
+version = "0.7.1"
 description = "Generate fresh docker images"
 readme = "README.md"
 license = "BSD-2-Clause"

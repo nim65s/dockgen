@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.7.1] - 2026-04-14
+
 ## [v0.7.0] - 2026-04-14
 
 - fix project order
@@ -42,7 +44,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial minial working version
 
-[Unreleased]: https://github.com/nim65s/dockgen/compare/v0.7.0...main
+[Unreleased]: https://github.com/nim65s/dockgen/compare/v0.7.1...main
+[v0.7.1]: https://github.com/nim65s/dockgen/compare/v0.7.0...v0.7.1
 [v0.7.0]: https://github.com/nim65s/dockgen/compare/v0.6.1...v0.7.0
 [v0.6.1]: https://github.com/nim65s/dockgen/compare/v0.6.0...v0.6.1
 [v0.6.0]: https://github.com/nim65s/dockgen/compare/v0.5.0...v0.6.0
