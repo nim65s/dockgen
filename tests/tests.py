@@ -15,10 +15,10 @@ class DockgenTest(TestCase):
         args.output = Path(mktemp())
         Dockgen(args)
         output = args.output.read_text()
-        self.assertIn(
-            "ADD . .",
-            output,
-        )
+        ADD_THIS = "ADD . ."
+        self.assertIn(ADD_THIS, output)
+        add = [line for line in output.splitlines() if "ADD" in line]
+        self.assertEqual(add[-1], ADD_THIS)
 
     def test_example_robot_data(self):
         args = get_conf(get_parser())
