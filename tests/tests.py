@@ -20,6 +20,28 @@ class DockgenTest(TestCase):
         add = [line for line in output.splitlines() if "ADD" in line]
         self.assertEqual(add[-1], ADD_THIS)
 
+    def test_pip(self):
+        args = get_conf(get_parser())
+        args.file = Path(__file__).parent / "pip.toml"
+        args.output = Path(mktemp())
+        args.build = True
+        args.name = "dockgen-pip"
+        Dockgen(args)
+        docker = check_output(
+            [
+                "docker",
+                "run",
+                "--rm",
+                args.name,
+                "python",
+                "-c",
+                "import requests; import example_adder; print(requests.__path__, example_adder.__path__)",
+            ],
+            text=True,
+        )
+        self.assertIn("requests", docker)
+        self.assertIn("example_adder", docker)
+
     def test_example_robot_data(self):
         args = get_conf(get_parser())
         args.file = Path(__file__).parent / "example-robot-data.toml"

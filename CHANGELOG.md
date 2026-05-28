@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- added `pip_deps` support. use with care.
+  dont mix apt & pip unless your absolutely sure what you do.
+
 ## [v0.7.1] - 2026-04-14
 
 ## [v0.7.0] - 2026-04-14
