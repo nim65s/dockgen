@@ -19,6 +19,7 @@ GENERAL_APT_DEPS = [
     "git",
     "libpython3-dev",
     "python-is-python3",
+    "python3-venv",
 ]
 
 
@@ -62,8 +63,18 @@ class Dockgen:
             )
         )
 
+        pip_deps = " \\\n    ".join(
+            sorted(
+                {
+                    *(d for p in self.projects.values() for d in p.pip_deps),
+                }
+            )
+        )
+
         with args.output.open("w") as out:
-            print(main.render(args=args, apt_deps=apt_deps), file=out)
+            print(
+                main.render(args=args, apt_deps=apt_deps, pip_deps=pip_deps), file=out
+            )
             print(file=out)
             for layer in layers:
                 print(layer, file=out)

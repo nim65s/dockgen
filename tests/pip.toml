@@ -1,0 +1,3 @@
+[example-adder]
+pip_deps = ["requests"]
+url = "github:gepetto"
