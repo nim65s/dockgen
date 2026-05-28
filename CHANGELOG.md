@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.8.0] - 2026-05-28
+
 - added `pip_deps` support. use with care.
   dont mix apt & pip unless your absolutely sure what you do.
 
@@ -47,7 +49,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial minial working version
 
-[Unreleased]: https://github.com/nim65s/dockgen/compare/v0.7.1...main
+[Unreleased]: https://github.com/nim65s/dockgen/compare/v0.8.0...main
+[v0.8.0]: https://github.com/nim65s/dockgen/compare/v0.7.1...v0.8.0
 [v0.7.1]: https://github.com/nim65s/dockgen/compare/v0.7.0...v0.7.1
 [v0.7.0]: https://github.com/nim65s/dockgen/compare/v0.6.1...v0.7.0
 [v0.6.1]: https://github.com/nim65s/dockgen/compare/v0.6.0...v0.6.1
