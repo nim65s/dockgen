@@ -24,6 +24,7 @@ RUN cd /usr/local/lib/python3.* \
 
 ENV JOBS={{ args.jobs }} \
     CMAKE_BUILD_TYPE=Release \
+    CMAKE_INSTALL_PREFIX=/usr/local \
     CTEST_PARALLEL_LEVEL={{ args.jobs }} \
     CTEST_OUTPUT_ON_FAILURE=ON \
     VIRTUAL_ENV=/usr/local
