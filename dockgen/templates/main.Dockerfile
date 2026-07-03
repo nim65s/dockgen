@@ -1,6 +1,6 @@
 FROM {{ args.from }} AS base
 
-WORKDIR /src
+WORKDIR /dockgen
 
 SHELL ["/bin/bash", "-euxc"]
 

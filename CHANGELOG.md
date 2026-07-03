@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- set `WORKDIR` to `/dockgen` instead of `/src`
+
 ## [v0.8.0] - 2026-05-28
 
 - added `pip_deps` support. use with care.
