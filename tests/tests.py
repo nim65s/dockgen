@@ -87,7 +87,7 @@ class DockgenTest(TestCase):
             ],
             text=True,
         )
-        self.assertIn("/jrl-cmakemodulesTargets.cmake", docker)
+        self.assertIn("/v2/modules/jrl.cmake", docker)
 
     def test_wrong(self):
         args = get_conf(get_parser())
