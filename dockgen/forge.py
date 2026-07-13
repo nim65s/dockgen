@@ -97,10 +97,12 @@ class Forge:
 
     def get_file_github(self, path: Path) -> Path | None:
         url = f"https://api.github.com/repos/{self.org}/{self.name}"
-        content = httpx.get(f"{url}/contents/{path}", headers=self.headers)
+        content = httpx.get(
+            f"{url}/contents/{path}", headers=self.headers, timeout=20.0
+        )
         if content.status_code == 200:
             download_url = content.json()["download_url"]
-            content = httpx.get(download_url, headers=self.headers)
+            content = httpx.get(download_url, headers=self.headers, timeout=20.0)
             if content.status_code == 200:
                 path = self.dir / path
                 path.write_text(content.text)
