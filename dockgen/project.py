@@ -48,7 +48,7 @@ class Project:
         self.url = url
         for forge_type in ForgeType:
             if self.url.startswith(forge_type):
-                self.forge = Forge(dockgen.args, forge_type, url, name)
+                self.forge = Forge(dockgen.args, forge_type, url, name, version)
                 break
         else:
             err = f"Project {name} at {url} has an unknown forge"

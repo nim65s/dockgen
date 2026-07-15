@@ -22,7 +22,12 @@ class ForgeType(StrEnum):
 
 class Forge:
     def __init__(
-        self, args: Namespace, forge_type: ForgeType, url: str, name: str | None
+        self,
+        args: Namespace,
+        forge_type: ForgeType,
+        url: str,
+        name: str | None,
+        version: str | None,
     ):
         self.args = args
         self.forge_type = forge_type
@@ -30,6 +35,7 @@ class Forge:
         self.headers = {}
         self.org = None
         self.name = name
+        self.version = version
         self.dir = args.work_dir / self.name
         self.slug = (
             "dot"
@@ -48,11 +54,21 @@ class Forge:
         self.dir.mkdir(parents=True, exist_ok=True)
 
         self.api_url = f"https://api.github.com/repos/{self.org}/{self.name}"
-        latest = httpx.get(
-            f"{self.api_url}/releases/latest", headers=self.headers
-        ).json()
-        self.version = latest["tag_name"]
-        self.tarball = latest["tarball_url"]
+        if self.version is not None:
+            r = httpx.get(
+                f"{self.api_url}/tarball/{self.version}", headers=self.headers
+            )
+            if r.has_redirect_location:
+                self.tarball = str(r.next_request.url)
+            else:
+                err = "can't get github tarball url for ${self.name} ${self.version}"
+                raise RuntimeError(err)
+        else:
+            latest = httpx.get(
+                f"{self.api_url}/releases/latest", headers=self.headers
+            ).json()
+            self.version = latest["tag_name"]
+            self.tarball = latest["tarball_url"]
 
     def init_http(self):
         if not self.name:
@@ -73,7 +89,6 @@ class Forge:
             unpack_archive(self.args.work_dir / filename, self.dir)
 
     def init_dot(self):
-        self.version = None
         self.tarball = None
 
     # def init_git(self):
