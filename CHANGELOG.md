@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- don't get latest github release when `version` is set
+
 ## [v0.10.1] - 2026-07-13
+
+- fix release
 
 ## [v0.10.0] - 2026-07-13
 
