@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- improve error message whe "tag_name" is not available
+
 ## [v0.11.0] - 2026-07-15
 
 - don't get latest github release when `version` is set
