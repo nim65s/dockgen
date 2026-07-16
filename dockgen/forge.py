@@ -67,6 +67,9 @@ class Forge:
             latest = httpx.get(
                 f"{self.api_url}/releases/latest", headers=self.headers
             ).json()
+            if "tag_name" not in latest or "tarball_url" not in latest:
+                err = f"github api did not provide latest '{self.name}' version 'tag_name' and/or 'tarball_url':\n {latest}"
+                raise RuntimeError(err)
             self.version = latest["tag_name"]
             self.tarball = latest["tarball_url"]
 
