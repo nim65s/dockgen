@@ -3,6 +3,7 @@
 
 [[ $(basename "$PWD") == docs ]] && cd ..
 
+unset UV_INDEX
 
 OLD=$(uv version --short)
 uv version --bump $1
