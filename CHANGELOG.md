@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - improve error message whe "tag_name" is not available
+- fix lock
 
 ## [v0.11.0] - 2026-07-15
 
