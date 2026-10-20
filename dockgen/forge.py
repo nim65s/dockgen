@@ -4,9 +4,8 @@ from argparse import Namespace
 from enum import StrEnum
 from logging import getLogger
 from pathlib import Path
-from urllib.parse import urlparse
 from shutil import unpack_archive
-# from subprocess import check_call
+from urllib.parse import urlparse
 
 import httpx
 
@@ -84,10 +83,12 @@ class Forge:
             logger.info("downloading %s to %s", self.url, self.args.work_dir)
             self.args.work_dir.mkdir(parents=True)
             filename = Path(urlparse(self.url).path).name
-            with (self.args.work_dir / filename).open("wb") as f:
-                with httpx.stream("GET", self.url) as r:
-                    for data in r.iter_bytes():
-                        f.write(data)
+            with (
+                (self.args.work_dir / filename).open("wb") as f,
+                httpx.stream("GET", self.url) as r,
+            ):
+                for data in r.iter_bytes():
+                    f.write(data)
             logger.info("extracting %s to %s", filename, self.dir)
             unpack_archive(self.args.work_dir / filename, self.dir)
 
@@ -104,7 +105,7 @@ class Forge:
     #         check_call(["git", "clone", self.url], cwd=self.args.work_dir)
     #     self.tarbal = ???
 
-    def get_file(self, path: Path) -> Path | None:
+    def get_file(self, path: Path | str) -> Path | None:
         method = f"get_file_{self.slug}"
         if hasattr(self, method):
             return getattr(self, method)(path)

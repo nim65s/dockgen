@@ -17,7 +17,7 @@ description = "Generate fresh docker images"
 readme = "README.md"
 license = "BSD-2-Clause"
 authors = [
-  {name = "Guilhem Saurel", email = "guilhem.saurel@laas.fr"}
+  { name = "Guilhem Saurel", email = "guilhem.saurel@laas.fr" }
 ]
 requires-python = ">=3.13"
 dependencies = [
