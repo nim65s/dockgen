@@ -3,11 +3,11 @@
 from argparse import Namespace
 from logging import getLogger
 from subprocess import check_call
-
 from tomllib import load
+
 from jinja2 import Environment, PackageLoader, select_autoescape
 
-from .conf import get_parser, get_conf
+from .conf import get_conf, get_parser
 from .project import Project
 
 logger = getLogger("dockgen")

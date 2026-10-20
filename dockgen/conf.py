@@ -21,14 +21,14 @@ def get_parser() -> ArgumentParser:
         "-q",
         "--quiet",
         action="count",
-        default=int(environ.get("QUIET", 0)),
+        default=int(environ.get("QUIET", "0")),
         help="decrement verbosity level",
     )
     parser.add_argument(
         "-v",
         "--verbose",
         action="count",
-        default=int(environ.get("VERBOSITY", 0)),
+        default=int(environ.get("VERBOSITY", "0")),
         help="increment verbosity level",
     )
     parser.add_argument(

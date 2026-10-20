@@ -7,7 +7,6 @@ from typing import TYPE_CHECKING
 
 from .forge import Forge, ForgeType
 
-
 if TYPE_CHECKING:  # pragma: no cover
     from .__main__ import Dockgen
 
@@ -63,9 +62,10 @@ class Project:
         self.src_deps = set(src_deps or [])
         self.configure_args = set(configure_args or [])
 
-        if self.url != ".":
-            if upstream_dockgen := self.forge.get_file("dockgen.toml"):
-                self.upstream(upstream_dockgen)
+        if self.url != "." and (
+            upstream_dockgen := self.forge.get_file("dockgen.toml")
+        ):
+            self.upstream(upstream_dockgen)
 
     def detect(self) -> list[str]:
         """
