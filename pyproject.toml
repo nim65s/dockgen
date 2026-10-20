@@ -28,6 +28,10 @@ dependencies = [
 [project.scripts]
 dockgen = "dockgen:main"
 
+[project.urls]
+Changelog = "https://github.com/nim65s/dockgen/blob/cmeel/CHANGELOG.md"
+Homepage = "https://github.com/nim65s/dockgen"
+
 [tool.coverage.run]
 parallel = true
 
