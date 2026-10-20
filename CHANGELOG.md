@@ -7,83 +7,83 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [v0.11.1] - 2026-07-16
+## [0.11.1] - 2026-07-16
 
 - improve error message whe "tag_name" is not available
 - fix lock
 
-## [v0.11.0] - 2026-07-15
+## [0.11.0] - 2026-07-15
 
 - don't get latest github release when `version` is set
 
-## [v0.10.1] - 2026-07-13
+## [0.10.1] - 2026-07-13
 
 - fix release
 
-## [v0.10.0] - 2026-07-13
+## [0.10.0] - 2026-07-13
 
 - github: add 20s timeout
 
-## [v0.9.0] - 2026-07-03
+## [0.9.0] - 2026-07-03
 
 - set `WORKDIR` to `/dockgen` instead of `/src`
 - set `CMAKE_INSTALL_PREFIX=/usr/local`
 
-## [v0.8.0] - 2026-05-28
+## [0.8.0] - 2026-05-28
 
 - added `pip_deps` support. use with care.
   dont mix apt & pip unless your absolutely sure what you do.
 
-## [v0.7.1] - 2026-04-14
+## [0.7.1] - 2026-04-14
 
-## [v0.7.0] - 2026-04-14
+## [0.7.0] - 2026-04-14
 
 - fix project order
 
-## [v0.6.1] - 2026-03-07
+## [0.6.1] - 2026-03-07
 
 - allow uv_build 0.10
 
-## [v0.6.0] - 2025-11-20
+## [0.6.0] - 2025-11-20
 
-## [v0.5.0] - 2025-10-20
+## [0.5.0] - 2025-10-20
 
 - add `ca-certificates` apt package
 - allow uv_build v0.9
 - update tests for jrl-cmakemodules #790
 
-## [v0.4.0] - 2025-09-30
+## [0.4.0] - 2025-09-30
 
 - add `configure_args` option
 - setup dependabot uv
 
-## [v0.3.0] - 2025-07-28
+## [0.3.0] - 2025-07-28
 
 - use upstream for eigenpy online test
 - hatchling -> uv_build
 
-## [v0.2.0] - 2025-07-16
+## [0.2.0] - 2025-07-16
 
 - Add changelog
 - Setup release process
 
-## [v0.1.0] - 2025-07-16
+## [0.1.0] - 2025-07-16
 
 - Initial minial working version
 
 [Unreleased]: https://github.com/nim65s/dockgen/compare/v0.11.1...main
-[v0.11.1]: https://github.com/nim65s/dockgen/compare/v0.11.0...v0.11.1
-[v0.11.0]: https://github.com/nim65s/dockgen/compare/v0.10.1...v0.11.0
-[v0.10.1]: https://github.com/nim65s/dockgen/compare/v0.10.0...v0.10.1
-[v0.10.0]: https://github.com/nim65s/dockgen/compare/v0.9.0...v0.10.0
-[v0.9.0]: https://github.com/nim65s/dockgen/compare/v0.8.0...v0.9.0
-[v0.8.0]: https://github.com/nim65s/dockgen/compare/v0.7.1...v0.8.0
-[v0.7.1]: https://github.com/nim65s/dockgen/compare/v0.7.0...v0.7.1
-[v0.7.0]: https://github.com/nim65s/dockgen/compare/v0.6.1...v0.7.0
-[v0.6.1]: https://github.com/nim65s/dockgen/compare/v0.6.0...v0.6.1
-[v0.6.0]: https://github.com/nim65s/dockgen/compare/v0.5.0...v0.6.0
-[v0.5.0]: https://github.com/nim65s/dockgen/compare/v0.4.0...v0.5.0
-[v0.4.0]: https://github.com/nim65s/dockgen/compare/v0.3.0...v0.4.0
-[v0.3.0]: https://github.com/nim65s/dockgen/compare/v0.2.0...v0.3.0
-[v0.2.0]: https://github.com/nim65s/dockgen/compare/v0.1.0...v0.2.0
-[v0.1.0]: https://github.com/nim65s/dockgen/releases/tag/v0.1.0
+[0.11.1]: https://github.com/nim65s/dockgen/compare/v0.11.0...v0.11.1
+[0.11.0]: https://github.com/nim65s/dockgen/compare/v0.10.1...v0.11.0
+[0.10.1]: https://github.com/nim65s/dockgen/compare/v0.10.0...v0.10.1
+[0.10.0]: https://github.com/nim65s/dockgen/compare/v0.9.0...v0.10.0
+[0.9.0]: https://github.com/nim65s/dockgen/compare/v0.8.0...v0.9.0
+[0.8.0]: https://github.com/nim65s/dockgen/compare/v0.7.1...v0.8.0
+[0.7.1]: https://github.com/nim65s/dockgen/compare/v0.7.0...v0.7.1
+[0.7.0]: https://github.com/nim65s/dockgen/compare/v0.6.1...v0.7.0
+[0.6.1]: https://github.com/nim65s/dockgen/compare/v0.6.0...v0.6.1
+[0.6.0]: https://github.com/nim65s/dockgen/compare/v0.5.0...v0.6.0
+[0.5.0]: https://github.com/nim65s/dockgen/compare/v0.4.0...v0.5.0
+[0.4.0]: https://github.com/nim65s/dockgen/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/nim65s/dockgen/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/nim65s/dockgen/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/nim65s/dockgen/releases/tag/v0.1.0
