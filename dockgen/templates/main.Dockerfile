@@ -20,6 +20,7 @@ RUN --mount=type=cache,sharing=locked,target=/root/.cache/pip \
 
 RUN cd /usr/local/lib/python3.* \
  && rmdir dist-packages \
+ && mkdir -p site-packages \
  && ln -s site-packages dist-packages
 
 ENV JOBS={{ args.jobs }} \
